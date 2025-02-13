@@ -55,29 +55,6 @@ const Login = () => {
     </form>
   );
 };
-
-const Profile = () => {
-  const [user, setUser] = useState(null);
-  const fetchUser = async () => {
-    const token = localStorage.getItem('token');
-    const { data } = await axios.get('/api/users/username', { headers: { Authorization: `Bearer ${token}` } });
-    setUser(data);
-  };
-  return (
-    <div className="p-4 max-w-md mx-auto bg-white shadow-md rounded-md">
-      <button onClick={fetchUser} className="bg-purple-500 text-white p-2 rounded w-full mb-2">Get Profile</button>
-      {user && (
-        <div>
-          <h2 className="text-xl font-bold mb-2">{user.fullName}</h2>
-          <p>Email: {user.email}</p>
-          <p>Gender: {user.gender}</p>
-          <p>DOB: {user.dob}</p>
-          <p>Country: {user.country}</p>
-        </div>
-      )}
-    </div>
-  );
-};
 const SearchUser = () => {
   const [query, setQuery] = useState('');
   const [user, setUser] = useState(null);
